@@ -1095,7 +1095,11 @@ correct_plug_type:
 		WCD_MBHC_REG_READ(WCD_MBHC_MIC_SCHMT_RESULT, mic_sch);
 		if (hs_comp_res && !(hphl_sch || mic_sch)) {
 			pr_debug("%s: cable is extension cable\n", __func__);
+#ifdef CONFIG_MACH_JALEBI
+			plug_type = MBHC_PLUG_TYPE_HEADSET;
+#else
 			plug_type = MBHC_PLUG_TYPE_HIGH_HPH;
+#endif
 			wrk_complete = true;
 		} else {
 			pr_debug("%s: cable might be headset: %d\n", __func__,
@@ -1214,6 +1218,28 @@ static void wcd_mbhc_detect_plug_type(struct wcd_mbhc *mbhc)
 		if (!mbhc->current_plug)
 			mbhc->current_plug = plug_type;
 		pr_debug("%s: Plug found, plug type is %d\n",
+		if (!result1 && !(result2 & 0x01))
+			plug_type = MBHC_PLUG_TYPE_HEADSET;
+		else if (!result1 && (result2 & 0x01))
+#ifdef CONFIG_MACH_JALEBI
+			plug_type = MBHC_PLUG_TYPE_HEADSET;
+#else
+			plug_type = MBHC_PLUG_TYPE_HIGH_HPH;
+#endif
+		else {
+			plug_type = MBHC_PLUG_TYPE_INVALID;
+			goto exit;
+		}
+	} else {
+		if (!result1 && !(result2 & 0x01))
+			plug_type = MBHC_PLUG_TYPE_HEADPHONE;
+		else {
+			plug_type = MBHC_PLUG_TYPE_INVALID;
+			goto exit;
+		}
+	}
+exit:
+	pr_debug("%s: Valid plug found, plug type is %d\n",
 			 __func__, plug_type);
 	}
 
