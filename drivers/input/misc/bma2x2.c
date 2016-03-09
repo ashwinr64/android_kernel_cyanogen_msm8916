@@ -1756,7 +1756,7 @@ static int bma2x2_check_chip_id(struct i2c_client *client,
 {
 	int i = 0;
 	int err = 0;
-	unsigned char chip_id;
+	unsigned char chip_id = 0;
 	unsigned char read_count = 0;
 	unsigned char bma2x2_sensor_type_count = 0;
 
@@ -1805,7 +1805,7 @@ static int bma2x2_set_newdata(struct i2c_client *client,
 			unsigned char channel, unsigned char int_newdata)
 {
 
-	unsigned char data;
+	unsigned char data = 0;
 	int comres = 0;
 
 	switch (channel) {
@@ -1840,7 +1840,7 @@ static int bma2x2_set_int1_pad_sel(struct i2c_client *client, unsigned char
 		int1sel)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 	unsigned char state;
 	state = 0x01;
 
@@ -1924,7 +1924,7 @@ static int bma2x2_set_int2_pad_sel(struct i2c_client *client, unsigned char
 		int2sel)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 	unsigned char state;
 	state = 0x01;
 
@@ -2006,7 +2006,7 @@ static int bma2x2_set_Int_Enable(struct i2c_client *client, unsigned char
 		InterruptType , unsigned char value)
 {
 	int comres = 0;
-	unsigned char data1, data2;
+	unsigned char data1 = 0, data2 = 0;
 
 	if ((11 < InterruptType) && (InterruptType < 16)) {
 		switch (InterruptType) {
@@ -2142,7 +2142,7 @@ static int bma2x2_get_interruptstatus1(struct i2c_client *client, unsigned char
 		*intstatus)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_STATUS1_REG, &data);
 	*intstatus = data;
@@ -2155,7 +2155,7 @@ static int bma2x2_get_interruptstatus2(struct i2c_client *client, unsigned char
 		*intstatus)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_STATUS2_REG, &data);
 	*intstatus = data;
@@ -2168,7 +2168,7 @@ static int bma2x2_get_HIGH_first(struct i2c_client *client, unsigned char
 						param, unsigned char *intstatus)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	switch (param) {
 	case 0:
@@ -2200,7 +2200,7 @@ static int bma2x2_get_HIGH_sign(struct i2c_client *client, unsigned char
 		*intstatus)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_STATUS_ORIENT_HIGH_REG,
 			&data);
@@ -2215,7 +2215,7 @@ static int bma2x2_get_slope_first(struct i2c_client *client, unsigned char
 	param, unsigned char *intstatus)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	switch (param) {
 	case 0:
@@ -2247,7 +2247,7 @@ static int bma2x2_get_slope_sign(struct i2c_client *client, unsigned char
 		*intstatus)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_STATUS_TAP_SLOPE_REG,
 			&data);
@@ -2262,7 +2262,7 @@ static int bma2x2_get_orient_status(struct i2c_client *client, unsigned char
 		*intstatus)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_STATUS_ORIENT_HIGH_REG,
 			&data);
@@ -2276,7 +2276,7 @@ static int bma2x2_get_orient_flat_status(struct i2c_client *client, unsigned
 		char *intstatus)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_STATUS_ORIENT_HIGH_REG,
 			&data);
@@ -2290,7 +2290,7 @@ static int bma2x2_get_orient_flat_status(struct i2c_client *client, unsigned
 static int bma2x2_set_Int_Mode(struct i2c_client *client, unsigned char Mode)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 
 	comres = bma2x2_smbus_read_byte(client,
@@ -2307,7 +2307,7 @@ static int bma2x2_set_int1_active_lvl(struct i2c_client *client,
 		bool activeHigh)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client,
 			BMA2X2_INT1_PAD_ACTIVE_LEVEL__REG, &data);
@@ -2326,7 +2326,7 @@ static int bma2x2_set_int2_active_lvl(struct i2c_client *client,
 		bool activeHigh)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client,
 			BMA2X2_INT2_PAD_ACTIVE_LEVEL__REG, &data);
@@ -2344,7 +2344,7 @@ static int bma2x2_set_int2_active_lvl(struct i2c_client *client,
 static int bma2x2_get_Int_Mode(struct i2c_client *client, unsigned char *Mode)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 
 	comres = bma2x2_smbus_read_byte(client,
@@ -2359,7 +2359,7 @@ static int bma2x2_set_slope_duration(struct i2c_client *client, unsigned char
 		duration)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 
 	comres = bma2x2_smbus_read_byte(client,
@@ -2375,7 +2375,7 @@ static int bma2x2_get_slope_duration(struct i2c_client *client, unsigned char
 		*status)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 
 	comres = bma2x2_smbus_read_byte(client,
@@ -2391,7 +2391,7 @@ static int bma2x2_set_slope_no_mot_duration(struct i2c_client *client,
 			unsigned char duration)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 
 	comres = bma2x2_smbus_read_byte(client,
@@ -2408,7 +2408,7 @@ static int bma2x2_get_slope_no_mot_duration(struct i2c_client *client,
 			unsigned char *status)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 
 	comres = bma2x2_smbus_read_byte(client,
@@ -2424,7 +2424,7 @@ static int bma2x2_set_slope_threshold(struct i2c_client *client,
 		unsigned char threshold)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	data = threshold;
 	comres = bma2x2_smbus_write_byte(client,
@@ -2437,7 +2437,7 @@ static int bma2x2_get_slope_threshold(struct i2c_client *client,
 		unsigned char *status)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 
 	comres = bma2x2_smbus_read_byte(client,
@@ -2451,7 +2451,7 @@ static int bma2x2_set_slope_no_mot_threshold(struct i2c_client *client,
 		unsigned char threshold)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	data = threshold;
 	comres = bma2x2_smbus_write_byte(client,
@@ -2464,7 +2464,7 @@ static int bma2x2_get_slope_no_mot_threshold(struct i2c_client *client,
 		unsigned char *status)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 
 	comres = bma2x2_smbus_read_byte(client,
@@ -2479,7 +2479,7 @@ static int bma2x2_set_low_g_duration(struct i2c_client *client, unsigned char
 		duration)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_LOWG_DUR__REG, &data);
 	data = BMA2X2_SET_BITSLICE(data, BMA2X2_LOWG_DUR, duration);
@@ -2492,7 +2492,7 @@ static int bma2x2_get_low_g_duration(struct i2c_client *client, unsigned char
 		*status)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_LOW_DURN_REG, &data);
 	data = BMA2X2_GET_BITSLICE(data, BMA2X2_LOWG_DUR);
@@ -2505,7 +2505,7 @@ static int bma2x2_set_low_g_threshold(struct i2c_client *client, unsigned char
 		threshold)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_LOWG_THRES__REG, &data);
 	data = BMA2X2_SET_BITSLICE(data, BMA2X2_LOWG_THRES, threshold);
@@ -2518,7 +2518,7 @@ static int bma2x2_get_low_g_threshold(struct i2c_client *client, unsigned char
 		*status)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_LOW_THRES_REG, &data);
 	data = BMA2X2_GET_BITSLICE(data, BMA2X2_LOWG_THRES);
@@ -2531,7 +2531,7 @@ static int bma2x2_set_high_g_duration(struct i2c_client *client, unsigned char
 		duration)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_HIGHG_DUR__REG, &data);
 	data = BMA2X2_SET_BITSLICE(data, BMA2X2_HIGHG_DUR, duration);
@@ -2544,7 +2544,7 @@ static int bma2x2_get_high_g_duration(struct i2c_client *client, unsigned char
 		*status)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_HIGH_DURN_REG, &data);
 	data = BMA2X2_GET_BITSLICE(data, BMA2X2_HIGHG_DUR);
@@ -2557,7 +2557,7 @@ static int bma2x2_set_high_g_threshold(struct i2c_client *client, unsigned char
 		threshold)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_HIGHG_THRES__REG, &data);
 	data = BMA2X2_SET_BITSLICE(data, BMA2X2_HIGHG_THRES, threshold);
@@ -2571,7 +2571,7 @@ static int bma2x2_get_high_g_threshold(struct i2c_client *client, unsigned char
 		*status)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_HIGH_THRES_REG, &data);
 	data = BMA2X2_GET_BITSLICE(data, BMA2X2_HIGHG_THRES);
@@ -2585,7 +2585,7 @@ static int bma2x2_set_tap_duration(struct i2c_client *client, unsigned char
 		duration)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_TAP_DUR__REG, &data);
 	data = BMA2X2_SET_BITSLICE(data, BMA2X2_TAP_DUR, duration);
@@ -2598,7 +2598,7 @@ static int bma2x2_get_tap_duration(struct i2c_client *client, unsigned char
 		*status)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_TAP_PARAM_REG, &data);
 	data = BMA2X2_GET_BITSLICE(data, BMA2X2_TAP_DUR);
@@ -2610,7 +2610,7 @@ static int bma2x2_get_tap_duration(struct i2c_client *client, unsigned char
 static int bma2x2_set_tap_shock(struct i2c_client *client, unsigned char setval)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_TAP_SHOCK_DURN__REG,
 			&data);
@@ -2625,7 +2625,7 @@ static int bma2x2_get_tap_shock(struct i2c_client *client, unsigned char
 		*status)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_TAP_PARAM_REG, &data);
 	data = BMA2X2_GET_BITSLICE(data, BMA2X2_TAP_SHOCK_DURN);
@@ -2638,7 +2638,7 @@ static int bma2x2_set_tap_quiet(struct i2c_client *client, unsigned char
 		duration)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_TAP_QUIET_DURN__REG,
 			&data);
@@ -2653,7 +2653,7 @@ static int bma2x2_get_tap_quiet(struct i2c_client *client, unsigned char
 		*status)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_TAP_PARAM_REG, &data);
 	data = BMA2X2_GET_BITSLICE(data, BMA2X2_TAP_QUIET_DURN);
@@ -2666,7 +2666,7 @@ static int bma2x2_set_tap_threshold(struct i2c_client *client, unsigned char
 		threshold)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_TAP_THRES__REG, &data);
 	data = BMA2X2_SET_BITSLICE(data, BMA2X2_TAP_THRES, threshold);
@@ -2679,7 +2679,7 @@ static int bma2x2_get_tap_threshold(struct i2c_client *client, unsigned char
 		*status)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_TAP_THRES_REG, &data);
 	data = BMA2X2_GET_BITSLICE(data, BMA2X2_TAP_THRES);
@@ -2691,7 +2691,7 @@ static int bma2x2_get_tap_threshold(struct i2c_client *client, unsigned char
 static int bma2x2_set_tap_samp(struct i2c_client *client, unsigned char samp)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_TAP_SAMPLES__REG, &data);
 	data = BMA2X2_SET_BITSLICE(data, BMA2X2_TAP_SAMPLES, samp);
@@ -2704,7 +2704,7 @@ static int bma2x2_set_tap_samp(struct i2c_client *client, unsigned char samp)
 static int bma2x2_get_tap_samp(struct i2c_client *client, unsigned char *status)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_TAP_THRES_REG, &data);
 	data = BMA2X2_GET_BITSLICE(data, BMA2X2_TAP_SAMPLES);
@@ -2716,7 +2716,7 @@ static int bma2x2_get_tap_samp(struct i2c_client *client, unsigned char *status)
 static int bma2x2_set_orient_mode(struct i2c_client *client, unsigned char mode)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_ORIENT_MODE__REG, &data);
 	data = BMA2X2_SET_BITSLICE(data, BMA2X2_ORIENT_MODE, mode);
@@ -2730,7 +2730,7 @@ static int bma2x2_get_orient_mode(struct i2c_client *client, unsigned char
 		*status)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_ORIENT_PARAM_REG, &data);
 	data = BMA2X2_GET_BITSLICE(data, BMA2X2_ORIENT_MODE);
@@ -2743,7 +2743,7 @@ static int bma2x2_set_orient_blocking(struct i2c_client *client, unsigned char
 		samp)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_ORIENT_BLOCK__REG,
 			&data);
@@ -2758,7 +2758,7 @@ static int bma2x2_get_orient_blocking(struct i2c_client *client, unsigned char
 		*status)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_ORIENT_PARAM_REG, &data);
 	data = BMA2X2_GET_BITSLICE(data, BMA2X2_ORIENT_BLOCK);
@@ -2771,7 +2771,7 @@ static int bma2x2_set_orient_hyst(struct i2c_client *client, unsigned char
 		orienthyst)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_ORIENT_HYST__REG, &data);
 	data = BMA2X2_SET_BITSLICE(data, BMA2X2_ORIENT_HYST, orienthyst);
@@ -2785,7 +2785,7 @@ static int bma2x2_get_orient_hyst(struct i2c_client *client, unsigned char
 		*status)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_ORIENT_PARAM_REG, &data);
 	data = BMA2X2_GET_BITSLICE(data, BMA2X2_ORIENT_HYST);
@@ -2797,7 +2797,7 @@ static int bma2x2_set_theta_blocking(struct i2c_client *client, unsigned char
 		thetablk)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_THETA_BLOCK__REG, &data);
 	data = BMA2X2_SET_BITSLICE(data, BMA2X2_THETA_BLOCK, thetablk);
@@ -2811,7 +2811,7 @@ static int bma2x2_get_theta_blocking(struct i2c_client *client, unsigned char
 		*status)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_THETA_BLOCK_REG, &data);
 	data = BMA2X2_GET_BITSLICE(data, BMA2X2_THETA_BLOCK);
@@ -2824,7 +2824,7 @@ static int bma2x2_set_theta_flat(struct i2c_client *client, unsigned char
 		thetaflat)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_THETA_FLAT__REG, &data);
 	data = BMA2X2_SET_BITSLICE(data, BMA2X2_THETA_FLAT, thetaflat);
@@ -2837,7 +2837,7 @@ static int bma2x2_get_theta_flat(struct i2c_client *client, unsigned char
 		*status)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_THETA_FLAT_REG, &data);
 	data = BMA2X2_GET_BITSLICE(data, BMA2X2_THETA_FLAT);
@@ -2850,7 +2850,7 @@ static int bma2x2_set_flat_hold_time(struct i2c_client *client, unsigned char
 		holdtime)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_FLAT_HOLD_TIME__REG,
 			&data);
@@ -2865,7 +2865,7 @@ static int bma2x2_get_flat_hold_time(struct i2c_client *client, unsigned char
 		*holdtime)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_FLAT_HOLD_TIME_REG,
 			&data);
@@ -3033,7 +3033,7 @@ static int bma2x2_set_mode(struct i2c_client *client, unsigned char mode)
 static int bma2x2_get_mode(struct i2c_client *client, unsigned char *mode)
 {
 	int comres = 0;
-	unsigned char data1, data2;
+	unsigned char data1 = 0, data2 = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_MODE_CTRL_REG, &data1);
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_LOW_NOISE_CTRL_REG,
@@ -3127,7 +3127,7 @@ static int bma2x2_set_range(struct i2c_client *client, unsigned char Range)
 static int bma2x2_get_range(struct i2c_client *client, unsigned char *Range)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_RANGE_SEL__REG, &data);
 	data = BMA2X2_GET_BITSLICE(data, BMA2X2_RANGE_SEL);
@@ -3140,7 +3140,7 @@ static int bma2x2_get_range(struct i2c_client *client, unsigned char *Range)
 static int bma2x2_set_bandwidth(struct i2c_client *client, unsigned char BW)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 	int Bandwidth = 0;
 
 	if (BW > 7 && BW < 16) {
@@ -3203,7 +3203,7 @@ static int bma2x2_set_bandwidth(struct i2c_client *client, unsigned char BW)
 static int bma2x2_get_bandwidth(struct i2c_client *client, unsigned char *BW)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_BANDWIDTH__REG, &data);
 	data = BMA2X2_GET_BITSLICE(data, BMA2X2_BANDWIDTH);
@@ -3216,7 +3216,7 @@ int bma2x2_get_sleep_duration(struct i2c_client *client, unsigned char
 		*sleep_dur)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client,
 			BMA2X2_SLEEP_DUR__REG, &data);
@@ -3230,7 +3230,7 @@ int bma2x2_set_sleep_duration(struct i2c_client *client, unsigned char
 		sleep_dur)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 	int sleep_duration = 0;
 
 	if (sleep_dur > 4 && sleep_dur < 16) {
@@ -3311,7 +3311,7 @@ static int bma2x2_get_fifo_mode(struct i2c_client *client, unsigned char
 		*fifo_mode)
 {
 	int comres;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_FIFO_MODE__REG, &data);
 	*fifo_mode = BMA2X2_GET_BITSLICE(data, BMA2X2_FIFO_MODE);
@@ -3322,7 +3322,7 @@ static int bma2x2_get_fifo_mode(struct i2c_client *client, unsigned char
 static int bma2x2_set_fifo_mode(struct i2c_client *client, unsigned char
 		fifo_mode)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	int comres = 0;
 
 	if (fifo_mode < 4) {
@@ -3342,7 +3342,7 @@ static int bma2x2_get_fifo_trig(struct i2c_client *client, unsigned char
 		*fifo_trig)
 {
 	int comres;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client,
 			BMA2X2_FIFO_TRIGGER_ACTION__REG, &data);
@@ -3354,7 +3354,7 @@ static int bma2x2_get_fifo_trig(struct i2c_client *client, unsigned char
 static int bma2x2_set_fifo_trig(struct i2c_client *client, unsigned char
 		fifo_trig)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	int comres = 0;
 
 	if (fifo_trig < 4) {
@@ -3375,7 +3375,7 @@ static int bma2x2_get_fifo_trig_src(struct i2c_client *client, unsigned char
 		*trig_src)
 {
 	int comres;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client,
 			BMA2X2_FIFO_TRIGGER_SOURCE__REG, &data);
@@ -3387,7 +3387,7 @@ static int bma2x2_get_fifo_trig_src(struct i2c_client *client, unsigned char
 static int bma2x2_set_fifo_trig_src(struct i2c_client *client, unsigned char
 		trig_src)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	int comres = 0;
 
 	if (trig_src < 4) {
@@ -3408,7 +3408,7 @@ static int bma2x2_get_fifo_framecount(struct i2c_client *client, unsigned char
 			 *framecount)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client,
 			BMA2X2_FIFO_FRAME_COUNTER_S__REG, &data);
@@ -3421,7 +3421,7 @@ static int bma2x2_get_fifo_data_sel(struct i2c_client *client, unsigned char
 		*data_sel)
 {
 	int comres;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client,
 			BMA2X2_FIFO_DATA_SELECT__REG, &data);
@@ -3433,7 +3433,7 @@ static int bma2x2_get_fifo_data_sel(struct i2c_client *client, unsigned char
 static int bma2x2_set_fifo_data_sel(struct i2c_client *client, unsigned char
 		data_sel)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	int comres = 0;
 
 	if (data_sel < 4) {
@@ -3456,7 +3456,7 @@ static int bma2x2_set_fifo_data_sel(struct i2c_client *client, unsigned char
 static int bma2x2_get_offset_target(struct i2c_client *client, unsigned char
 		channel, unsigned char *offset)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	int comres = 0;
 
 	switch (channel) {
@@ -3494,7 +3494,7 @@ static int bma2x2_get_offset_target(struct i2c_client *client, unsigned char
 static int bma2x2_set_offset_target(struct i2c_client *client, unsigned char
 		channel, unsigned char offset)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	int comres = 0;
 
 	switch (channel) {
@@ -3551,7 +3551,7 @@ static int bma2x2_get_cal_ready(struct i2c_client *client,
 					unsigned char *calrdy)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_FAST_CAL_RDY_S__REG,
 			&data);
@@ -3565,7 +3565,7 @@ static int bma2x2_set_cal_trigger(struct i2c_client *client, unsigned char
 		caltrigger)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_CAL_TRIGGER__REG, &data);
 	data = BMA2X2_SET_BITSLICE(data, BMA2X2_CAL_TRIGGER, caltrigger);
@@ -3589,7 +3589,7 @@ static int bma2x2_set_offset_x(struct i2c_client *client, unsigned char
 		offsetfilt)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	data =  offsetfilt;
 
@@ -3609,7 +3609,7 @@ static int bma2x2_get_offset_x(struct i2c_client *client, unsigned char
 						*offsetfilt)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 #ifdef CONFIG_SENSORS_BMI058
 	comres = bma2x2_smbus_read_byte(client, BMI058_OFFSET_X_AXIS_REG,
@@ -3627,7 +3627,7 @@ static int bma2x2_set_offset_y(struct i2c_client *client, unsigned char
 						offsetfilt)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	data =  offsetfilt;
 
@@ -3645,7 +3645,7 @@ static int bma2x2_get_offset_y(struct i2c_client *client, unsigned char
 						*offsetfilt)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 #ifdef CONFIG_SENSORS_BMI058
 	comres = bma2x2_smbus_read_byte(client, BMI058_OFFSET_Y_AXIS_REG,
@@ -3663,7 +3663,7 @@ static int bma2x2_set_offset_z(struct i2c_client *client, unsigned char
 						offsetfilt)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	data =  offsetfilt;
 	comres = bma2x2_smbus_write_byte(client, BMA2X2_OFFSET_Z_AXIS_REG,
@@ -3676,7 +3676,7 @@ static int bma2x2_get_offset_z(struct i2c_client *client, unsigned char
 						*offsetfilt)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_OFFSET_Z_AXIS_REG,
 						&data);
@@ -3690,7 +3690,7 @@ static int bma2x2_set_selftest_st(struct i2c_client *client, unsigned char
 		selftest)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_EN_SELF_TEST__REG,
 			&data);
@@ -3704,7 +3704,7 @@ static int bma2x2_set_selftest_st(struct i2c_client *client, unsigned char
 static int bma2x2_set_selftest_stn(struct i2c_client *client, unsigned char stn)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_NEG_SELF_TEST__REG,
 			&data);
@@ -3718,7 +3718,7 @@ static int bma2x2_set_selftest_stn(struct i2c_client *client, unsigned char stn)
 static int bma2x2_set_selftest_amp(struct i2c_client *client, unsigned char amp)
 {
 	int comres = 0;
-	unsigned char data;
+	unsigned char data = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_SELF_TEST_AMP__REG,
 			&data);
@@ -3918,7 +3918,7 @@ static int bma2x2_read_accel_z(struct i2c_client *client,
 static int bma2x2_read_temperature(struct i2c_client *client,
 					signed char *temperature)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	int comres = 0;
 
 	comres = bma2x2_smbus_read_byte(client, BMA2X2_TEMPERATURE_REG, &data);
@@ -4024,7 +4024,7 @@ static int bma2x2_sel_int2_pad(const struct bma2x2_data *data)
 static ssize_t bma2x2_int_mode_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4055,7 +4055,7 @@ static ssize_t bma2x2_int_mode_store(struct device *dev,
 static ssize_t bma2x2_slope_duration_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4089,7 +4089,7 @@ static ssize_t bma2x2_slope_duration_store(struct device *dev,
 static ssize_t bma2x2_slope_no_mot_duration_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4124,7 +4124,7 @@ static ssize_t bma2x2_slope_no_mot_duration_store(struct device *dev,
 static ssize_t bma2x2_slope_threshold_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4157,7 +4157,7 @@ static ssize_t bma2x2_slope_threshold_store(struct device *dev,
 static ssize_t bma2x2_slope_no_mot_threshold_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4190,7 +4190,7 @@ static ssize_t bma2x2_slope_no_mot_threshold_store(struct device *dev,
 static ssize_t bma2x2_high_g_duration_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4224,7 +4224,7 @@ static ssize_t bma2x2_high_g_duration_store(struct device *dev,
 static ssize_t bma2x2_high_g_threshold_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4257,7 +4257,7 @@ static ssize_t bma2x2_high_g_threshold_store(struct device *dev,
 static ssize_t bma2x2_low_g_duration_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4291,7 +4291,7 @@ static ssize_t bma2x2_low_g_duration_store(struct device *dev,
 static ssize_t bma2x2_low_g_threshold_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4323,7 +4323,7 @@ static ssize_t bma2x2_low_g_threshold_store(struct device *dev,
 static ssize_t bma2x2_tap_threshold_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4355,7 +4355,7 @@ static ssize_t bma2x2_tap_threshold_store(struct device *dev,
 static ssize_t bma2x2_tap_duration_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4388,7 +4388,7 @@ static ssize_t bma2x2_tap_duration_store(struct device *dev,
 static ssize_t bma2x2_tap_quiet_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4422,7 +4422,7 @@ static ssize_t bma2x2_tap_quiet_store(struct device *dev,
 static ssize_t bma2x2_tap_shock_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4456,7 +4456,7 @@ static ssize_t bma2x2_tap_shock_store(struct device *dev,
 static ssize_t bma2x2_tap_samp_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4489,7 +4489,7 @@ static ssize_t bma2x2_tap_samp_store(struct device *dev,
 static ssize_t bma2x2_orient_mode_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4523,7 +4523,7 @@ static ssize_t bma2x2_orient_mode_store(struct device *dev,
 static ssize_t bma2x2_orient_blocking_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4556,7 +4556,7 @@ static ssize_t bma2x2_orient_blocking_store(struct device *dev,
 static ssize_t bma2x2_orient_hyst_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4590,7 +4590,7 @@ static ssize_t bma2x2_orient_hyst_store(struct device *dev,
 static ssize_t bma2x2_orient_theta_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4624,7 +4624,7 @@ static ssize_t bma2x2_orient_theta_store(struct device *dev,
 static ssize_t bma2x2_flat_theta_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -4657,7 +4657,7 @@ static ssize_t bma2x2_flat_theta_store(struct device *dev,
 static ssize_t bma2x2_flat_hold_time_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -5155,7 +5155,7 @@ static ssize_t bma2x2_register_show(struct device *dev,
 static ssize_t bma2x2_range_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -5186,7 +5186,7 @@ static ssize_t bma2x2_range_store(struct device *dev,
 static ssize_t bma2x2_bandwidth_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -5224,7 +5224,7 @@ static ssize_t bma2x2_bandwidth_store(struct device *dev,
 static ssize_t bma2x2_mode_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -5755,7 +5755,7 @@ exit:
 static int bma2x2_eeprom_prog(struct i2c_client *client)
 {
 	int res = 0, timeout = 0;
-	unsigned char databuf;
+	unsigned char databuf = 0;
 	res = bma2x2_smbus_read_byte(client, BMA2X2_EEPROM_CTRL_REG,
 					&databuf);
 	if (res < 0) {
@@ -5831,7 +5831,7 @@ static ssize_t bma2x2_fast_calibration_x_show(struct device *dev,
 {
 
 
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -5898,7 +5898,7 @@ static ssize_t bma2x2_fast_calibration_y_show(struct device *dev,
 {
 
 
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -5965,7 +5965,7 @@ static ssize_t bma2x2_fast_calibration_z_show(struct device *dev,
 {
 
 
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -6018,7 +6018,7 @@ static ssize_t bma2x2_fast_calibration_z_store(struct device *dev,
 static ssize_t bma2x2_SleepDur_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -6051,7 +6051,7 @@ static ssize_t bma2x2_SleepDur_store(struct device *dev,
 static ssize_t bma2x2_fifo_mode_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -6085,7 +6085,7 @@ static ssize_t bma2x2_fifo_mode_store(struct device *dev,
 static ssize_t bma2x2_fifo_trig_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -6120,7 +6120,7 @@ static ssize_t bma2x2_fifo_trig_store(struct device *dev,
 static ssize_t bma2x2_fifo_trig_src_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -6161,7 +6161,7 @@ static ssize_t bma2x2_fifo_trig_src_store(struct device *dev,
 static ssize_t bma2x2_fifo_data_sel_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 	signed char place = BOSCH_SENSOR_PLACE_UNKNOWN;
@@ -6196,7 +6196,7 @@ static ssize_t bma2x2_fifo_data_sel_show(struct device *dev,
 static ssize_t bma2x2_fifo_framecount_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -6227,7 +6227,7 @@ static ssize_t bma2x2_fifo_framecount_store(struct device *dev,
 static ssize_t bma2x2_temperature_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -6421,7 +6421,7 @@ static ssize_t bma2x2_fifo_data_out_frame_show(struct device *dev,
 static ssize_t bma2x2_offset_x_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -6455,7 +6455,7 @@ static ssize_t bma2x2_offset_x_store(struct device *dev,
 static ssize_t bma2x2_offset_y_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 
@@ -6489,7 +6489,7 @@ static ssize_t bma2x2_offset_y_store(struct device *dev,
 static ssize_t bma2x2_offset_z_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
-	unsigned char data;
+	unsigned char data = 0;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct bma2x2_data *bma2x2 = i2c_get_clientdata(client);
 

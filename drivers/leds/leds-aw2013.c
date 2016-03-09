@@ -615,7 +615,7 @@ static int aw2013_led_probe(struct i2c_client *client,
 {
 	struct aw2013_led *led_array;
 	struct device_node *node;
-	int ret, num_leds = 0;
+	int ret = 0, num_leds = 0;
 
 	node = client->dev.of_node;
 	if (node == NULL)

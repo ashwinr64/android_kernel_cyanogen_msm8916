@@ -217,7 +217,7 @@ err:
 
 static int audio_ref_clk_probe(struct platform_device *pdev)
 {
-	int clk_gpio;
+	int clk_gpio = 0;
 	int ret;
 	struct clk *div_clk1;
 
